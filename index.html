@@ -147,10 +147,16 @@
             color: #667eea;
         }
 
+        /* FIXED: Photo Circle Code */
+        .hero-image {
+            text-align: center;
+        }
+
         .hero-image img {
-            width: 100%;
-            max-width: 350px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
+            object-fit: cover;
             border: 5px solid white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
@@ -434,6 +440,11 @@
                 order: -1;
             }
 
+            .hero-image img {
+                width: 200px;
+                height: 200px;
+            }
+
             .personal-info {
                 grid-template-columns: 1fr;
             }
@@ -487,7 +498,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="profile.jpg" alt="Farkhanda Moqim" onerror="this.src='https://ui-avatars.com/api/?name=Farkhanda+Moqim&background=2563eb&color=fff&rounded=true&size=200'">
+                    <img src="profile.jpg" alt="Farkhanda Moqim">
                 </div>
             </div>
         </div>
