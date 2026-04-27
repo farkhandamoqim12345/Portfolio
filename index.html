@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farkhanda Moqim | Portfolio</title>
+    <!-- Google Fonts & Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9edf2 100%);
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header / Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem 4rem;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 15px 25px -8px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem;
+            transition: transform 0.25s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #0f172a, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #334155;
+            max-width: 600px;
+            margin: 0.75rem auto 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f1f5f9;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            color: #0f172a;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-links a i {
+            font-size: 1.2rem;
+            color: #3b82f6;
+        }
+
+        .contact-links a:hover {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+        }
+        .contact-links a:hover i {
+            color: white;
+        }
+
+        /* Section styling */
+        .section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #3b82f6;
+            padding-left: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-title i {
+            color: #3b82f6;
+            font-size: 1.6rem;
+        }
+
+        /* Projects Grid (GitHub based) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .project-card {
+            background: #f8fafc;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            transition: 0.2s;
+            border: 1px solid #eef2f6;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #cbd5e1;
+            box-shadow: 0 12px 20px -10px rgba(0,0,0,0.1);
+        }
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .project-card p {
+            color: #334155;
+            margin: 0.7rem 0;
+            font-size: 0.95rem;
+        }
+        .project-tech {
+            font-size: 0.75rem;
+            color: #3b82f6;
+            background: #e0f2fe;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            margin-top: 0.6rem;
+        }
+
+        .github-note {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .github-note a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Skills / About */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+        .skill-badge {
+            background: #e2e8f0;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .about-text {
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            color: #475569;
+            font-size: 0.85rem;
+            border-top: 1px solid #cbd5e1;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 680px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+            .contact-links a {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+        <!-- Profile Picture: change "my-photo.jpg" to your actual image file name -->
+        <img src="my-photo.jpg" alt="Farkhanda Moqim profile" class="profile-img" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=Farkhanda'">
+        <h1>Farkhanda Moqim</h1>
+        <div class="tagline">
+            <i class="fas fa-code"></i> Frontend Developer | Creative Problem Solver
+        </div>
+        <div class="contact-links">
+            <a href="https://github.com/farkhandamoqim12345" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="mailto:farkhandamoqim@gmail.com"><i class="fas fa-envelope"></i> farkhandamoqim@gmail.com</a>
+            <a href="#" id="copyEmailBtn"><i class="far fa-copy"></i> Copy Email</a>
+        </div>
+    </div>
+
+    <!-- About me -->
+    <div class="section">
+        <div class="section-title">
+            <i class="fas fa-user-astronaut"></i>
+            <span>About Me</span>
+        </div>
+        <div class="about-text">
+            👋 Hi! I'm Farkhanda — passionate front-end developer who loves crafting modern, responsive websites. 
+            I enjoy turning ideas into clean, working code. Exploring new tech, building useful interfaces, and learning every day. 
+            Currently focused on HTML, CSS, JavaScript, and React. Let's build something amazing together!
+        </div>
+    </div>
+
+    <!-- GitHub Projects Section (manually updated from your public repos) 
+         Since I couldn't fetch repos dynamically, I've added placeholders. 
+         YOU can edit these projects to match your actual repositories. -->
+    <div class="section">
+        <div class="section-title">
+            <i class="fab fa-github-alt"></i>
+            <span>My GitHub Projects</span>
+        </div>
+        <div class="projects-grid" id="projectsContainer">
+            <!-- Static projects - feel free to replace with your actual repo names & descriptions -->
+            <div class="project-card">
+                <h3><i class="fab fa-react"></i> Portfolio 2025</h3>
+                <p>My personal portfolio website built with modern HTML/CSS & JS. Fully responsive and animated.</p>
+                <span class="project-tech">HTML, CSS, JavaScript</span>
+                <div style="margin-top: 10px;"><a href="https://github.com/farkhandamoqim12345/portfolio" target="_blank" style="color:#3b82f6;">View Repo →</a></div>
+            </div>
+            <div class="project-card">
+                <h3><i class="fas fa-cloud-sun"></i> Weather App</h3>
+                <p>Real-time weather app using OpenWeather API, shows temperature, humidity and dynamic icons.</p>
+                <span class="project-tech">JavaScript, API, CSS</span>
+                <div style="margin-top: 10px;"><a href="https://github.com/farkhandamoqim12345/weather-app" target="_blank" style="color:#3b82f6;">Check code →</a></div>
+            </div>
+            <div class="project-card">
+                <h3><i class="fas fa-tasks"></i> Task Manager</h3>
+                <p>A simple but elegant to-do list app with local storage. Add, delete, and mark tasks complete.</p>
+                <span class="project-tech">Vanilla JS, LocalStorage</span>
+                <div style="margin-top: 10px;"><a href="https://github.com/farkhandamoqim12345/task-manager" target="_blank" style="color:#3b82f6;">Repository →</a></div>
+            </div>
+        </div>
+        <div class="github-note">
+            ⭐ Explore all my work on <a href="https://github.com/farkhandamoqim12345" target="_blank">GitHub profile</a> — more projects updated regularly.
+        </div>
+    </div>
+
+    <!-- Skills & Tools -->
+    <div class="section">
+        <div class="section-title">
+            <i class="fas fa-cogs"></i>
+            <span>Tech Stack & Skills</span>
+        </div>
+        <div class="skills-list">
+            <span class="skill-badge">HTML5</span>
+            <span class="skill-badge">CSS3 / Tailwind</span>
+            <span class="skill-badge">JavaScript (ES6+)</span>
+            <span class="skill-badge">React.js</span>
+            <span class="skill-badge">Git & GitHub</span>
+            <span class="skill-badge">Responsive Design</span>
+            <span class="skill-badge">Figma basics</span>
+            <span class="skill-badge">VS Code</span>
+        </div>
+        <div class="about-text" style="margin-top:1.2rem">
+            📫 Email me: <strong>farkhandamoqim@gmail.com</strong> or DM on GitHub. Open to collab & freelance!
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 Farkhanda Moqim — Built with <i class="fas fa-heart" style="color:#dc2626"></i> using HTML/CSS</p>
+        <p style="margin-top: 8px; font-size: 0.75rem;">Profile picture? Add your own image as "my-photo.jpg" in same folder.</p>
+    </div>
+</div>
+
+<!-- Simple JS for copy email -->
+<script>
+    document.getElementById('copyEmailBtn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        const email = 'farkhandamoqim@gmail.com';
+        navigator.clipboard.writeText(email).then(() => {
+            alert('📧 Email copied to clipboard!');
+        }).catch(() => {
+            prompt('Manual copy: select this text', email);
+        });
+    });
+
+    // Optional: you can later fetch GitHub repos dynamically if needed, but placeholder works.
+    // Just replace project details with your actual repos from github once you check them manually.
+</script>
+
+</body>
+</html>
