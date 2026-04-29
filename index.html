@@ -1,814 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farkhanda Moqim | CS Student Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo h2 {
-            color: #2563eb;
-            font-size: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li a {
-            color: #333;
-            text-decoration: none;
-            padding: 0 1rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links li a:hover {
-            color: #2563eb;
-        }
-
-        .burger {
-            display: none;
-            cursor: pointer;
-        }
-
-        .burger div {
-            width: 25px;
-            height: 3px;
-            background: #333;
-            margin: 5px;
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-text h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #667eea;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        /* FIXED: Photo Circle Code */
-        .hero-image {
-            text-align: center;
-        }
-
-        .hero-image img {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        /* Section Titles */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: #2563eb;
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background: #f8fafc;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .personal-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .personal-info div {
-            padding: 0.5rem;
-        }
-
-        .personal-info strong {
-            color: #2563eb;
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background: #f8fafc;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-card i {
-            font-size: 3rem;
-            color: #2563eb;
-            margin-bottom: 1rem;
-        }
-
-        .skill-card h3 {
-            margin-bottom: 1rem;
-        }
-
-        .skill-bar {
-            background: #e2e8f0;
-            height: 10px;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-
-        .skill-progress {
-            background: #2563eb;
-            height: 100%;
-            border-radius: 5px;
-            transition: width 1s ease;
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 80px 0;
-            background: #f8fafc;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-icon {
-            font-size: 2.5rem;
-            color: #2563eb;
-            margin-bottom: 1rem;
-        }
-
-        .project-info h3 {
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .project-info p {
-            margin-bottom: 1rem;
-            color: #666;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .project-tech span {
-            background: #e2e8f0;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: #2563eb;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-item i {
-            font-size: 2rem;
-            color: #2563eb;
-        }
-
-        .contact-item h4 {
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 12px;
-            border: 1px solid #e2e8f0;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-
-        .contact-form button {
-            width: fit-content;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* Footer */
-        footer {
-            background: #1e293b;
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .social-links {
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #2563eb;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                right: -100%;
-                top: 70px;
-                height: calc(100vh - 70px);
-                background: white;
-                flex-direction: column;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                padding-top: 2rem;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links li {
-                margin: 1rem 0;
-            }
-
-            .burger {
-                display: block;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-image {
-                order: -1;
-            }
-
-            .hero-image img {
-                width: 200px;
-                height: 200px;
-            }
-
-            .personal-info {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farkhanda Moqim | CS Student</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --bg: #faf9f7;
+    --cream: #f3f0ea;
+    --accent: #c8102e;
+    --accent2: #1a1a2e;
+    --muted: #767676;
+    --border: #e8e4dc;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.25s ease;
+    opacity: 0.6;
+  }
+
+  nav {
+    position: fixed; top: 0; width: 100%;
+    z-index: 1000;
+    padding: 1.2rem 0;
+    background: rgba(250,249,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.02em;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.88rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--muted); transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+  .burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .burger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: 0.3s; }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 2rem 0;
+    align-items: center;
+    gap: 4rem;
+  }
+  .hero-left { padding-right: 2rem; }
+  .hero-tag {
+    display: inline-block;
+    background: var(--accent); color: white;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 2px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -0.03em; color: var(--ink);
+    margin-bottom: 1rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-name .line2 { color: var(--accent); }
+  .hero-role {
+    font-size: 1.1rem; color: var(--muted);
+    font-weight: 300; margin-bottom: 1.5rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-desc {
+    font-size: 1rem; line-height: 1.8; color: #555;
+    margin-bottom: 2.5rem; max-width: 480px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
+  .btn-main {
+    padding: 0.9rem 2rem;
+    background: var(--ink); color: white;
+    border: 2px solid var(--ink);
+    font-size: 0.88rem; font-weight: 600;
+    letter-spacing: 0.04em; text-decoration: none;
+    border-radius: 3px; transition: all 0.25s;
+  }
+  .btn-main:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+  .btn-ghost {
+    padding: 0.9rem 2rem;
+    background: transparent; color: var(--ink);
+    border: 2px solid var(--ink);
+    font-size: 0.88rem; font-weight: 600;
+    letter-spacing: 0.04em; text-decoration: none;
+    border-radius: 3px; transition: all 0.25s;
+  }
+  .btn-ghost:hover { background: var(--ink); color: white; transform: translateY(-2px); }
+
+  .hero-right { display: flex; align-items: center; justify-content: center; animation: fadeIn 1s 0.2s ease both; }
+  .photo-frame { position: relative; width: 380px; height: 460px; }
+  .photo-bg {
+    position: absolute; top: 20px; right: -20px;
+    width: 100%; height: 100%;
+    background: var(--accent); border-radius: 4px; z-index: 0;
+  }
+  .photo-frame img {
+    position: relative; z-index: 1;
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 4px;
+    display: block; filter: grayscale(20%);
+  }
+  .photo-badge {
+    position: absolute; bottom: -18px; left: -18px; z-index: 2;
+    background: var(--ink); color: white;
+    padding: 1rem 1.2rem; border-radius: 3px;
+    font-size: 0.8rem; line-height: 1.4;
+  }
+  .photo-badge strong { display: block; font-size: 1.1rem; font-family: 'Playfair Display', serif; }
+
+  section { padding: 100px 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .section-header { margin-bottom: 4rem; }
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    color: var(--ink); line-height: 1.1;
+  }
+  .section-line { width: 50px; height: 3px; background: var(--accent); margin-top: 1rem; }
+
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p { font-size: 1.05rem; line-height: 1.9; color: #444; margin-bottom: 1.2rem; }
+  .info-table {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1px solid var(--border); border-radius: 4px;
+    overflow: hidden; background: white;
+  }
+  .info-row { padding: 0.85rem 1.2rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .info-row:nth-child(even) { border-right: none; }
+  .info-row:nth-last-child(-n+2) { border-bottom: none; }
+  .info-row .label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 0.25rem; }
+  .info-row .value { font-size: 0.9rem; color: var(--ink); font-weight: 500; }
+
+  .skills { background: white; }
+  .skills-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+  .skill-item {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 4px; padding: 1.5rem 1rem;
+    text-align: center; transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .skill-item::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px; background: var(--accent);
+    transform: scaleX(0); transition: transform 0.3s ease;
+  }
+  .skill-item:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+  .skill-item:hover::before { transform: scaleX(1); }
+  .skill-item i { font-size: 1.8rem; color: var(--accent); margin-bottom: 0.8rem; display: block; }
+  .skill-item h4 { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; color: var(--ink); margin-bottom: 0.6rem; }
+  .skill-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0; transition: width 1.2s ease; }
+  .pct { font-size: 0.7rem; color: var(--muted); margin-top: 0.4rem; display: block; }
+
+  .projects { background: var(--cream); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .project-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 4px; padding: 2rem;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .project-card::after {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 0; background: var(--accent);
+    transition: height 0.35s ease;
+  }
+  .project-card:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.1); transform: translateY(-5px); }
+  .project-card:hover::after { height: 100%; }
+  .project-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--border); line-height: 1; margin-bottom: 0.5rem; transition: color 0.3s; }
+  .project-card:hover .project-num { color: var(--accent); opacity: 0.3; }
+  .project-icon-box { width: 44px; height: 44px; background: var(--accent); border-radius: 3px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+  .project-icon-box i { color: white; font-size: 1.1rem; }
+  .project-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--ink); }
+  .project-card p { font-size: 0.88rem; color: #666; line-height: 1.7; margin-bottom: 1.2rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag { background: var(--cream); border: 1px solid var(--border); color: var(--muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; padding: 0.25rem 0.6rem; border-radius: 2px; text-transform: uppercase; }
+
+  .contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
+  .contact-info-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 0.5rem; }
+  .c-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .c-icon { width: 42px; height: 42px; flex-shrink: 0; background: var(--cream); border: 1px solid var(--border); border-radius: 3px; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1rem; }
+  .c-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.2rem; }
+  .c-val { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .field input, .field textarea { padding: 0.85rem 1rem; border: 1px solid var(--border); border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; background: var(--bg); color: var(--ink); transition: border-color 0.2s; outline: none; resize: vertical; }
+  .field input:focus, .field textarea:focus { border-color: var(--accent); background: white; }
+  .submit-btn { align-self: flex-start; padding: 0.9rem 2.2rem; background: var(--accent); color: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 3px; cursor: pointer; transition: all 0.25s; }
+  .submit-btn:hover { background: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+  footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 2.5rem 0; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: white; font-weight: 700; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 0.82rem; }
+  .social-links { display: flex; gap: 1rem; }
+  .social-links a { width: 36px; height: 36px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-size: 0.9rem; text-decoration: none; transition: all 0.2s; }
+  .social-links a:hover { background: var(--accent); border-color: var(--accent); color: white; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1024px) {
+    .skills-grid { grid-template-columns: repeat(4, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; gap: 3rem; }
+    .hero-left { padding-right: 0; text-align: center; }
+    .hero-btns { justify-content: center; }
+    .photo-frame { width: 280px; height: 340px; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+    .nav-links { position: fixed; top: 65px; right: -100%; background: white; flex-direction: column; height: calc(100vh - 65px); width: 100%; padding: 2rem; transition: right 0.3s; z-index: 999; box-shadow: -5px 0 20px rgba(0,0,0,0.1); gap: 2rem; }
+    .nav-links.open { right: 0; }
+    .burger { display: flex; }
+    .info-table { grid-template-columns: 1fr; }
+    .info-row { border-right: none; }
+    .hero-right { order: -1; }
+    .cursor, .cursor-ring { display: none; }
+  }
+</style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <h2>Farkhanda Moqim</h2>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="burger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-            </div>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="logo">F<span>.</span>Moqim</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<section id="home" style="padding:0; min-height:100vh; display:flex; align-items:center; background: var(--bg);">
+  <div class="hero">
+    <div class="hero-left">
+      <span class="hero-tag">📍 Islamabad, Pakistan</span>
+      <h1 class="hero-name">Farkhanda<br><span class="line2">Moqim.</span></h1>
+      <p class="hero-role">Computer Science Student @ IST Islamabad</p>
+      <p class="hero-desc">Passionate about coding, problem-solving, and building innovative software solutions. Exploring full-stack development, AI, and modern web technologies.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-main">Get In Touch</a>
+        <a href="#projects" class="btn-ghost">View Projects</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="photo-frame">
+        <div class="photo-bg"></div>
+        <img src="profile.jpg" alt="Farkhanda Moqim">
+        <div class="photo-badge"><strong>BS CS</strong>IST Islamabad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div>
+        <div class="section-header">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title">Turning Ideas Into<br>Real-World Code</h2>
+          <div class="section-line"></div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h3>Hello, I'm</h3>
-                    <h1>Farkhanda Moqim</h1>
-                    <h2>Computer Science Student</h2>
-                    <p>Passionate about coding, problem-solving, and building innovative software solutions. Currently pursuing BS CS at IST, Islamabad.</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">Contact Me</a>
-                        <a href="#projects" class="btn btn-secondary">View Projects</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="profile.jpg" alt="Farkhanda Moqim">
-                </div>
-            </div>
+        <div class="about-text">
+          <p>I'm a dedicated Computer Science student pursuing my Bachelor's degree from IST, Islamabad. I have a strong passion for programming and love creating efficient, user-friendly applications.</p>
+          <p>My journey in CS has equipped me with both theoretical knowledge and practical development skills. I'm always eager to learn new technologies and take on challenging projects that push me to grow as a developer.</p>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a dedicated Computer Science student currently pursuing my Bachelor's degree from IST, Islamabad. I have a strong passion for programming and love creating efficient, user-friendly applications. My journey in CS has equipped me with both theoretical knowledge and practical development skills.</p>
-                    <p>I'm always eager to learn new technologies and take on challenging projects that help me grow as a developer. Based in Islamabad, I'm actively working on expanding my skills in full-stack development, AI applications, and modern web technologies.</p>
-                    <div class="personal-info">
-                        <div><strong>Name:</strong> Farkhanda Moqim</div>
-                        <div><strong>Education:</strong> BS Computer Science @ IST</div>
-                        <div><strong>Location:</strong> Islamabad, Pakistan</div>
-                        <div><strong>Email:</strong> farkhandamoqim@gmail.com</div>
-                        <div><strong>GitHub:</strong> github.com/farkhandamoqim12345</div>
-                        <div><strong>LinkedIn:</strong> linkedin.com/in/farkhanda-moqim</div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div>
+        <div class="section-header">
+          <span class="section-label">Personal Info</span>
+          <h2 class="section-title" style="font-size:1.6rem;">Quick Details</h2>
+          <div class="section-line"></div>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fab fa-java"></i>
-                    <h3>Java</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-python"></i>
-                    <h3>Python</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h3>C++</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h3>C#</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML5</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS3</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 75%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h3>SQL</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-react"></i>
-                    <h3>React.js</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 70%"></div>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>UI/UX Design</h3>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: 75%"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="info-table">
+          <div class="info-row"><span class="label">Full Name</span><span class="value">Farkhanda Moqim</span></div>
+          <div class="info-row"><span class="label">Education</span><span class="value">BS CS @ IST</span></div>
+          <div class="info-row"><span class="label">Location</span><span class="value">Islamabad, Pakistan</span></div>
+          <div class="info-row"><span class="label">Email</span><span class="value">farkhandamoqim@gmail.com</span></div>
+          <div class="info-row"><span class="label">GitHub</span><span class="value">farkhandamoqim12345</span></div>
+          <div class="info-row"><span class="label">LinkedIn</span><span class="value">farkhanda-moqim</span></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-info">
-                        <i class="fas fa-cricket project-icon"></i>
-                        <h3>Cricket Tournament CLI</h3>
-                        <p>Command-line based tournament management system for cricket matches, teams, and scoring operations.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>CLI</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-info">
-                        <i class="fas fa-graduation-cap project-icon"></i>
-                        <h3>Student Result System</h3>
-                        <p>Efficient system to manage and display student results with database integration and reporting.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>Database</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-info">
-                        <i class="fas fa-brain project-icon"></i>
-                        <h3>Smart Result System</h3>
-                        <p>Advanced result processing system with analytics, insights, and comprehensive reporting features.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>.NET</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-info">
-                        <i class="fas fa-robot project-icon"></i>
-                        <h3>AI Summarizer</h3>
-                        <p>Text summarization tool using AI concepts to generate concise summaries from long content.</p>
-                        <div class="project-tech">
-                            <span>C#</span>
-                            <span>AI</span>
-                            <span>NLP</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-info">
-                        <i class="fas fa-user-graduate project-icon"></i>
-                        <h3>AI Study Buddy</h3>
-                        <p>Java-based AI assistant designed to help students with their studies and learning process.</p>
-                        <div class="project-tech">
-                            <span>Java</span>
-                            <span>AI</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-info">
-                        <i class="fas fa-car project-icon"></i>
-                        <h3>Super Car Racer 3D</h3>
-                        <p>Interactive 3D racing game built with Python for immersive and exciting gameplay experience.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>3D Graphics</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-info">
-                        <i class="fas fa-mosque project-icon"></i>
-                        <h3>Namaz Guidance App</h3>
-                        <p>Islamic mobile app with splash screen and login system for prayer timing and guidance.</p>
-                        <div class="project-tech">
-                            <span>Java</span>
-                            <span>Android</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-info">
-                        <i class="fas fa-code project-icon"></i>
-                        <h3>Portfolio Website</h3>
-                        <p>Modern, responsive portfolio website showcasing my skills, projects, and professional journey.</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section id="skills" class="skills">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+      <span class="section-label">What I Know</span>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-item"><i class="fab fa-java"></i><h4>Java</h4><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div><span class="pct">85%</span></div>
+      <div class="skill-item"><i class="fab fa-python"></i><h4>Python</h4><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div><span class="pct">80%</span></div>
+      <div class="skill-item"><i class="fas fa-code"></i><h4>C++</h4><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div><span class="pct">85%</span></div>
+      <div class="skill-item"><i class="fas fa-code"></i><h4>C#</h4><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div><span class="pct">80%</span></div>
+      <div class="skill-item"><i class="fab fa-html5"></i><h4>HTML5</h4><div class="skill-bar"><div class="skill-fill" data-w="90"></div></div><span class="pct">90%</span></div>
+      <div class="skill-item"><i class="fab fa-css3-alt"></i><h4>CSS3</h4><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div><span class="pct">85%</span></div>
+      <div class="skill-item"><i class="fab fa-js"></i><h4>JavaScript</h4><div class="skill-bar"><div class="skill-fill" data-w="75"></div></div><span class="pct">75%</span></div>
+      <div class="skill-item"><i class="fas fa-database"></i><h4>SQL</h4><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div><span class="pct">80%</span></div>
+      <div class="skill-item"><i class="fab fa-react"></i><h4>React.js</h4><div class="skill-bar"><div class="skill-fill" data-w="70"></div></div><span class="pct">70%</span></div>
+      <div class="skill-item"><i class="fas fa-paint-brush"></i><h4>UI/UX</h4><div class="skill-bar"><div class="skill-fill" data-w="75"></div></div><span class="pct">75%</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; display:flex; flex-direction:column; align-items:center;">
+      <span class="section-label">What I've Built</span>
+      <h2 class="section-title">My Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid reveal">
+      <div class="project-card">
+        <div class="project-num">01</div>
+        <div class="project-icon-box"><i class="fas fa-cricket"></i></div>
+        <h3>Cricket Tournament CLI</h3>
+        <p>Command-line tournament management system for cricket matches, teams, and scoring operations.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">CLI</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">02</div>
+        <div class="project-icon-box"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Student Result System</h3>
+        <p>System to manage and display student results with database integration and detailed reporting.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">Database</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">03</div>
+        <div class="project-icon-box"><i class="fas fa-brain"></i></div>
+        <h3>Smart Result System</h3>
+        <p>Advanced result processing with analytics, insights, and comprehensive reporting features.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">04</div>
+        <div class="project-icon-box"><i class="fas fa-robot"></i></div>
+        <h3>AI Summarizer</h3>
+        <p>Text summarization tool using AI and NLP concepts to generate concise summaries from long content.</p>
+        <div class="tags"><span class="tag">C#</span><span class="tag">AI</span><span class="tag">NLP</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">05</div>
+        <div class="project-icon-box"><i class="fas fa-user-graduate"></i></div>
+        <h3>AI Study Buddy</h3>
+        <p>Java-based AI assistant designed to help students with their studies and learning process.</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">AI</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">06</div>
+        <div class="project-icon-box"><i class="fas fa-car"></i></div>
+        <h3>Super Car Racer 3D</h3>
+        <p>Interactive 3D racing game built with Python for an immersive gameplay experience.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">3D Graphics</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">07</div>
+        <div class="project-icon-box"><i class="fas fa-mosque"></i></div>
+        <h3>Namaz Guidance App</h3>
+        <p>Islamic mobile app with splash screen and login system for prayer timing and guidance.</p>
+        <div class="tags"><span class="tag">Java</span><span class="tag">Android</span></div>
+      </div>
+      <div class="project-card">
+        <div class="project-num">08</div>
+        <div class="project-icon-box"><i class="fas fa-globe"></i></div>
+        <h3>Portfolio Website</h3>
+        <p>Modern, responsive portfolio website showcasing skills, projects, and professional journey.</p>
+        <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-grid reveal">
+      <div>
+        <div class="section-header">
+          <span class="section-label">Let's Talk</span>
+          <h2 class="section-title">Get In Touch</h2>
+          <div class="section-line"></div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>farkhandamoqim@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <div>
-                            <h4>GitHub</h4>
-                            <p>github.com/farkhandamoqim12345</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <div>
-                            <h4>LinkedIn</h4>
-                            <p>linkedin.com/in/farkhanda-moqim</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Islamabad, Pakistan</p>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" action="https://formspree.io/f/xqapkrrr" method="POST">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="text" name="subject" placeholder="Subject">
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
+        <p style="font-size:0.95rem; color:#666; line-height:1.8; margin-bottom:2rem;">Whether you have a project idea, a question, or just want to say hello — my inbox is always open!</p>
+        <div class="contact-info-list">
+          <div class="c-item"><div class="c-icon"><i class="fas fa-envelope"></i></div><div><span class="c-label">Email</span><span class="c-val">farkhandamoqim@gmail.com</span></div></div>
+          <div class="c-item"><div class="c-icon"><i class="fab fa-github"></i></div><div><span class="c-label">GitHub</span><span class="c-val">github.com/farkhandamoqim12345</span></div></div>
+          <div class="c-item"><div class="c-icon"><i class="fab fa-linkedin"></i></div><div><span class="c-label">LinkedIn</span><span class="c-val">linkedin.com/in/farkhanda-moqim</span></div></div>
+          <div class="c-item"><div class="c-icon"><i class="fas fa-map-marker-alt"></i></div><div><span class="c-label">Location</span><span class="c-val">Islamabad, Pakistan</span></div></div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Farkhanda Moqim. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/farkhandamoqim12345" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/farkhanda-moqim-034a9a325" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:farkhandamoqim@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xqapkrrr" method="POST">
+        <div class="form-row">
+          <div class="field"><label>Your Name</label><input type="text" name="name" placeholder="Farkhanda..." required></div>
+          <div class="field"><label>Your Email</label><input type="email" name="email" placeholder="you@email.com" required></div>
         </div>
-    </footer>
+        <div class="field"><label>Subject</label><input type="text" name="subject" placeholder="What's this about?"></div>
+        <div class="field"><label>Message</label><textarea name="message" rows="6" placeholder="Your message here..." required></textarea></div>
+        <button type="submit" class="submit-btn">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Mobile Navigation Toggle
-        const burger = document.querySelector('.burger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        burger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            burger.classList.toggle('toggle');
-        });
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">F<span>.</span>Moqim</div>
+    <p class="footer-copy">© 2025 Farkhanda Moqim. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://github.com/farkhandamoqim12345" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/farkhanda-moqim-034a9a325" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:farkhandamoqim@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx - 5 + 'px';
+    cursor.style.top = my - 5 + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx - 18 + 'px'; ring.style.top = ry - 18 + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
 
-        // Skill bar animation on scroll
-        const skillBars = document.querySelectorAll('.skill-progress');
-        const animateSkills = () => {
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
-        };
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-        // Trigger animation when skills section is in view
-        const skillsSection = document.querySelector('#skills');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkills();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-        
-        if (skillsSection) {
-            observer.observe(skillsSection);
-        }
-    </script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i * 0.05) + 's';
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+
+  const skillFills = document.querySelectorAll('.skill-fill');
+  const skillObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        skillFills.forEach(f => { f.style.width = f.dataset.w + '%'; });
+        skillObs.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const skillSection = document.querySelector('#skills');
+  if (skillSection) skillObs.observe(skillSection);
+</script>
 </body>
 </html>
